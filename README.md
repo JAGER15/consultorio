@@ -1,8 +1,8 @@
 # consultorio
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sistema IMC</title>
     <style>
         body {
@@ -145,27 +145,27 @@
         <div class="form">
             <h1 id="form-title">Datos de la Persona</h1>
             <form id="imc-form">
-                <input type="hidden" id="edit-id" value="">
+                <input type="hidden" id="edit-id" value="" />
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form_label">ID</label>
-                        <input class="form_input" type="text" id="id" required>
+                        <input class="form_input" type="text" id="id" required="" />
                     </div>
                     <div class="form-group">
                         <label class="form_label">Nombre</label>
-                        <input class="form_input" type="text" id="nombre" required>
+                        <input class="form_input" type="text" id="nombre" required="" />
                     </div>
                 </div>
                 
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form_label">Peso (kg)</label>
-                        <input class="form_input" type="number" step="0.01" id="peso" required>
+                        <input class="form_input" type="number" step="0.01" id="peso" required="" />
                     </div>
                     <div class="form-group">
                         <label class="form_label">Altura (m)</label>
-                        <input class="form_input" type="number" step="0.01" id="altura" required>
+                        <input class="form_input" type="number" step="0.01" id="altura" required="" />
                     </div>
                 </div>
                 
@@ -385,4 +385,11 @@
         renderTable();
     </script>
 </body>
+</html>
+
+
+      
+    </div>
+   
+  </body>
 </html>
