@@ -1,143 +1,140 @@
 # consultorio
-
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistema IMC</title>
- * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            
-        }
-        .container {
+    <style>
+        body {
+            font-family: Arial, sans-serif;
             max-width: 1200px;
             margin: 0 auto;
-        }
-        body {
-            background: linear-gradient(135deg, #ff9800, #ffc107);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
+            background-color: #f5f5f5;
         }
-        
-        .form {
+        .container {
             background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            width: 100%;
-            max-width: 500px;
-            transition: transform 0.3s ease;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        
-        .form:hover {
-            transform: translateY(-5px);
-        }
-        
-        h1 {
-            color: #ff6600;
-            text-align: center;
+        .form {
             margin-bottom: 30px;
-            font-size: 28px;
-            position: relative;
-            padding-bottom: 15px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
         }
-        
-        h1:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, #ff9800, #ffc107);
-            border-radius: 2px;
-        }
-        
         .form_label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
         }
-        
         .form_input {
             width: 100%;
-            padding: 14px 16px;
-            margin-bottom: 25px;
-            border: 2px solid #ffc107;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s;
-            background-color: #fffdf5;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
-        
-        .form_input:focus {
-            outline: none;
-            border-color: #ff9800;
-            box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
-            background-color: white;
-        }
-        
         button {
-            width: 100%;
-            padding: 15px;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 600;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
+            margin-right: 10px;
         }
-        
-        button[type="submit"] {
-            background: linear-gradient(to right, #ff9800, #ff6600);
+        button:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
         }
-        
-        button[type="submit"]:hover {
-            background: linear-gradient(to right, #ff6600, #ff9800);
-            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.6);
-            transform: translateY(-2px);
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
-        
-        button[type="button"] {
-            background: linear-gradient(to right, #ffc107, #ff9800);
+        .imc-low { background-color: #ffeb3b; }
+        .imc-normal { background-color: #8bc34a; }
+        .imc-overweight { background-color: #ff9800; }
+        .imc-obesity { background-color: #f44336; color: white; }
+        .btn-modify { 
+            background-color: #2196F3;
+            padding: 5px 10px;
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 5px;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
         }
-        
-        button[type="button"]:hover {
-            background: linear-gradient(to right, #ff9800, #ffc107);
-            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
-            transform: translateY(-2px);
+        .btn-delete { 
+            background-color: #f44336;
+            padding: 5px 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 5px;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
         }
-        
-        .form-footer {
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            display: none;
+        }
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+            display: block;
+        }
+        .alert-error {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+            display: block;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 1;
+        }
+        .actions-cell {
+            min-width: 150px;
+        }
+        .empty-message {
             text-align: center;
-            margin-top: 25px;
             color: #666;
-            font-size: 14px;
+            padding: 20px;
+            font-style: italic;
         }
-        
-        @media (max-width: 600px) {
-            .form {
-                padding: 30px 20px;
-            }
-            
-            h1 {
-                font-size: 24px;
-            }
-        }
+    </style>
 </head>
 <body>
     <div class="container">
